@@ -52,7 +52,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 } else
                 {
                     MessageBox.Show("Vui lòng nhập đúng mật khẩu", "Thông báo");
-
                 }
             }
         }

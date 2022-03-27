@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using static System.Windows.Forms.ListViewItem;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 {
@@ -138,7 +137,38 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Admin f = new Admin();
+            f.InsertFood += F_InsertFood;
+            f.DeleteFood += F_DeleteFood;
+            f.UpdateFood += F_UpdateFood;
             f.ShowDialog();
+        }
+
+        void F_InsertFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+        }
+
+        void F_DeleteFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+            LoadTable();
+        }
+
+        void F_UpdateFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,6 +190,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             Table table = lsvBill.Tag as Table;
+
+            if(table == null)
+            {
+                MessageBox.Show("Hãy chọn bàn.", "Thông báo");
+                return;
+            }
             int idBill = BillDAO.Instance.GetUnCheckBillIDByTableID(table.ID);
 
             int foodID = (cbFood.SelectedItem as Food).ID;

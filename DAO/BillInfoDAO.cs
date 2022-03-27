@@ -18,6 +18,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         }
         private BillInfoDAO() { }
 
+        public void DeleteBillInfoByFoodID(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("delete BillInfo where idFood = " + id);
+        }
+
         public List<BillInfo> GetListBillInfo(int id)
         {
             List<BillInfo> listBillInfo = new List<BillInfo>();

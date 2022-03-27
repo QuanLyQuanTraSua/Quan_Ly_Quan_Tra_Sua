@@ -52,18 +52,14 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public int GetMaxIDBill()
         {
-
             try
             {
-                return (int)DataProvider.Instance.ExecuteScalar("select max(id) from Bill");
+                return (int)DataProvider.Instance.ExecuteScalar("select MAX(id) from Bill");
             }
             catch
             {
                 return 1;
-            }
-            
-
-            
+            } 
         }
     }
 }

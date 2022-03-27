@@ -34,5 +34,22 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             return list;
         }
+
+        public Category GetCategoryByID(int id)
+        {
+            Category category = null;
+
+            string query = "select * from FoodCategory where id = " + id;
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow items in data.Rows)
+            {
+                category = new Category(items);
+                return category;
+            }
+
+            return category;
+        }
     }
 }

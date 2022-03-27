@@ -46,13 +46,13 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.cbFoodCategory = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txbSearchFoodName = new System.Windows.Forms.TextBox();
+            this.txbFoodName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txbFoodID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.txbNameFood = new System.Windows.Forms.TextBox();
+            this.txbSearchNameFood = new System.Windows.Forms.TextBox();
             this.btnSearchFood = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
@@ -319,19 +319,19 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.txbSearchFoodName);
+            this.panel8.Controls.Add(this.txbFoodName);
             this.panel8.Controls.Add(this.label2);
             this.panel8.Location = new System.Drawing.Point(4, 51);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 42);
             this.panel8.TabIndex = 3;
             // 
-            // txbSearchFoodName
+            // txbFoodName
             // 
-            this.txbSearchFoodName.Location = new System.Drawing.Point(91, 9);
-            this.txbSearchFoodName.Name = "txbSearchFoodName";
-            this.txbSearchFoodName.Size = new System.Drawing.Size(180, 21);
-            this.txbSearchFoodName.TabIndex = 1;
+            this.txbFoodName.Location = new System.Drawing.Point(91, 9);
+            this.txbFoodName.Name = "txbFoodName";
+            this.txbFoodName.Size = new System.Drawing.Size(180, 21);
+            this.txbFoodName.TabIndex = 1;
             // 
             // label2
             // 
@@ -359,6 +359,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.txbFoodID.ReadOnly = true;
             this.txbFoodID.Size = new System.Drawing.Size(180, 21);
             this.txbFoodID.TabIndex = 1;
+            this.txbFoodID.TextChanged += new System.EventHandler(this.txbFoodID_TextChanged);
             // 
             // label1
             // 
@@ -372,19 +373,19 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.txbNameFood);
+            this.panel5.Controls.Add(this.txbSearchNameFood);
             this.panel5.Controls.Add(this.btnSearchFood);
             this.panel5.Location = new System.Drawing.Point(429, 7);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(304, 50);
             this.panel5.TabIndex = 2;
             // 
-            // txbNameFood
+            // txbSearchNameFood
             // 
-            this.txbNameFood.Location = new System.Drawing.Point(4, 17);
-            this.txbNameFood.Name = "txbNameFood";
-            this.txbNameFood.Size = new System.Drawing.Size(219, 21);
-            this.txbNameFood.TabIndex = 5;
+            this.txbSearchNameFood.Location = new System.Drawing.Point(4, 17);
+            this.txbSearchNameFood.Name = "txbSearchNameFood";
+            this.txbSearchNameFood.Size = new System.Drawing.Size(219, 21);
+            this.txbSearchNameFood.TabIndex = 5;
             // 
             // btnSearchFood
             // 
@@ -431,6 +432,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnShowFood.TabIndex = 2;
             this.btnShowFood.Text = "Xem";
             this.btnShowFood.UseVisualStyleBackColor = true;
+            this.btnShowFood.Click += new System.EventHandler(this.btnShowFood_Click);
             // 
             // btnEdit
             // 
@@ -440,6 +442,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDeleteFood
             // 
@@ -449,6 +452,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnDeleteFood.TabIndex = 1;
             this.btnDeleteFood.Text = "Xóa";
             this.btnDeleteFood.UseVisualStyleBackColor = true;
+            this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
             // 
             // btnAddFood
             // 
@@ -458,6 +462,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddFood.TabIndex = 0;
             this.btnAddFood.Text = "Thêm";
             this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // tpFoodCategory
             // 
@@ -1030,7 +1035,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDeleteFood;
         private System.Windows.Forms.Button btnAddFood;
-        private System.Windows.Forms.TextBox txbNameFood;
+        private System.Windows.Forms.TextBox txbSearchNameFood;
         private System.Windows.Forms.Button btnSearchFood;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label4;
@@ -1038,7 +1043,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.ComboBox cbFoodCategory;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txbSearchFoodName;
+        private System.Windows.Forms.TextBox txbFoodName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txbFoodID;
