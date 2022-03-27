@@ -116,6 +116,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 totalPrice += items.TotalPrice;
                 lsvBill.Items.Add(lsvItem);
             }
+
             CultureInfo culture = new CultureInfo("vi-VN");
 
             txbTotalPrice.Text = totalPrice.ToString("c", culture);
@@ -200,8 +201,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
             if (idBill != -1)
             {
-                CultureInfo culture = new CultureInfo("vi-VN");
-                if (MessageBox.Show("Bạn có chắc muốn thanh toán cho bàn " + table.Name + ".\n Tổng tiền:  " + finalTotalPrice.ToString("c", culture), "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc muốn thanh toán cho bàn " + table.Name + ".\n Tổng tiền:  " + finalTotalPrice.ToString() + " VNĐ", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
 
