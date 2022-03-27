@@ -116,12 +116,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 totalPrice += items.TotalPrice;
                 lsvBill.Items.Add(lsvItem);
             }
-
             CultureInfo culture = new CultureInfo("vi-VN");
-
-            txbTotalPrice.Text = totalPrice.ToString("c", culture);
-
-            
+            txbTotalPrice.Text = totalPrice.ToString();
         }
 
         #endregion
@@ -135,15 +131,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         }
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AccountProfile f = new AccountProfile(LoginAccount);
-            f.UpdateAcc += f_UpdateAccount;
-            
+            AccountProfile f = new AccountProfile(LoginAccount);       
             f.ShowDialog();
-        }
-
-        void f_UpdateAccount(object sender, AccountEvent e)
-        {
-            TypeLastName(LoginAccount.DisplayName);
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,8 +200,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 }
             }
         }
-
-
         #endregion
     }
 }

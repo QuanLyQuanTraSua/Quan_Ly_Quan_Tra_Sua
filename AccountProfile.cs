@@ -49,10 +49,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 if (AccountDAO.Instance.UpdateAccount(userName, displayName, passWord, newPassWord))
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo");
-                    if(updateAcc != null)
-                    {
-                        updateAcc(this, new AccountEvent (AccountDAO.Instance.GetAccountByUserName(userName)));
-                    }
                 } else
                 {
                     MessageBox.Show("Vui lòng nhập đúng mật khẩu", "Thông báo");
@@ -61,13 +57,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             }
         }
 
-        private event EventHandler<AccountEvent> updateAcc;
-
-        public event EventHandler<AccountEvent> UpdateAcc
-        {
-            add { updateAcc += value; }
-            remove { updateAcc -= value; }
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
