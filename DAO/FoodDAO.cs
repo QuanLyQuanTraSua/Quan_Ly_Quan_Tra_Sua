@@ -52,6 +52,23 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             return list;
         }
 
+        public List<Food> SearchFoodByName(string name)
+        {
+            List<Food> list = new List<Food>();
+
+            string query = string.Format("select * from Food where name like N'%{0}%'", name);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow items in data.Rows)
+            {
+                Food food = new Food(items);
+                list.Add(food);
+            }
+
+            return list;
+        }
+
         public bool InsertFood(string name, int id, float price)
         {
             string query = string.Format("insert Food(name, idCategory, price) values(N'{0}', {1}, {2})", name, id, price);
