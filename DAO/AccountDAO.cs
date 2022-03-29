@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
-    class AccountDAO
+    public class AccountDAO
     {
         private static AccountDAO instance;
 
@@ -37,6 +37,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             }
 
             return null;
+        }
+
+        public DataTable GetListAccount()
+        {
+            return DataProvider.Instance.ExecuteQuery("select UserName, DisplayName, TYPE from Account");
         }
 
         public bool UpdateAccount(string userName, string displayName, string passWord, string newPassWord)

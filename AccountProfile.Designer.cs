@@ -90,7 +90,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel1.Location = new System.Drawing.Point(12, 60);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(346, 42);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // txbDisplayName
             // 
@@ -119,6 +120,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(346, 42);
             this.panel3.TabIndex = 2;
+            this.panel3.TabStop = true;
             // 
             // txbPassWord
             // 
@@ -126,7 +128,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.txbPassWord.Location = new System.Drawing.Point(143, 9);
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.Size = new System.Drawing.Size(194, 21);
-            this.txbPassWord.TabIndex = 2;
+            this.txbPassWord.TabIndex = 1;
             this.txbPassWord.UseSystemPasswordChar = true;
             // 
             // label3
@@ -146,7 +148,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel4.Location = new System.Drawing.Point(12, 156);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(346, 42);
-            this.panel4.TabIndex = 2;
+            this.panel4.TabIndex = 3;
+            this.panel4.TabStop = true;
             // 
             // txbNewPassWord
             // 
@@ -154,7 +157,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.txbNewPassWord.Location = new System.Drawing.Point(143, 9);
             this.txbNewPassWord.Name = "txbNewPassWord";
             this.txbNewPassWord.Size = new System.Drawing.Size(194, 21);
-            this.txbNewPassWord.TabIndex = 3;
+            this.txbNewPassWord.TabIndex = 1;
             this.txbNewPassWord.UseSystemPasswordChar = true;
             // 
             // label4
@@ -174,7 +177,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel5.Location = new System.Drawing.Point(12, 204);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(346, 42);
-            this.panel5.TabIndex = 2;
+            this.panel5.TabIndex = 4;
+            this.panel5.TabStop = true;
             // 
             // txbReEnterPassWord
             // 
@@ -182,7 +186,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.txbReEnterPassWord.Location = new System.Drawing.Point(143, 9);
             this.txbReEnterPassWord.Name = "txbReEnterPassWord";
             this.txbReEnterPassWord.Size = new System.Drawing.Size(194, 21);
-            this.txbReEnterPassWord.TabIndex = 4;
+            this.txbReEnterPassWord.TabIndex = 1;
             this.txbReEnterPassWord.UseSystemPasswordChar = true;
             // 
             // label5

@@ -78,14 +78,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.tpTable = new System.Windows.Forms.TabPage();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.cbTableStatus = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.txbTableName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbTableID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.dtgvTable = new System.Windows.Forms.DataGridView();
@@ -138,7 +135,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel18.SuspendLayout();
             this.tpTable.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.panel21.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -576,6 +572,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnShowCategory.TabIndex = 2;
             this.btnShowCategory.Text = "Xem";
             this.btnShowCategory.UseVisualStyleBackColor = true;
+            this.btnShowCategory.Click += new System.EventHandler(this.btnShowCategory_Click);
             // 
             // btnEditCategory
             // 
@@ -619,40 +616,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.panel21);
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Controls.Add(this.panel16);
             this.panel12.Location = new System.Drawing.Point(429, 64);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(304, 330);
             this.panel12.TabIndex = 10;
-            // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.cbTableStatus);
-            this.panel21.Controls.Add(this.label9);
-            this.panel21.Location = new System.Drawing.Point(4, 99);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(296, 42);
-            this.panel21.TabIndex = 4;
-            // 
-            // cbTableStatus
-            // 
-            this.cbTableStatus.FormattingEnabled = true;
-            this.cbTableStatus.Location = new System.Drawing.Point(133, 8);
-            this.cbTableStatus.Name = "cbTableStatus";
-            this.cbTableStatus.Size = new System.Drawing.Size(138, 23);
-            this.cbTableStatus.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 19);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Trạng thái";
             // 
             // panel13
             // 
@@ -682,20 +651,20 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.textBox2);
+            this.panel16.Controls.Add(this.txbTableID);
             this.panel16.Controls.Add(this.label6);
             this.panel16.Location = new System.Drawing.Point(4, 3);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(296, 42);
             this.panel16.TabIndex = 2;
             // 
-            // textBox2
+            // txbTableID
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 9);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(138, 21);
-            this.textBox2.TabIndex = 1;
+            this.txbTableID.Location = new System.Drawing.Point(133, 9);
+            this.txbTableID.Name = "txbTableID";
+            this.txbTableID.ReadOnly = true;
+            this.txbTableID.Size = new System.Drawing.Size(138, 21);
+            this.txbTableID.TabIndex = 1;
             // 
             // label6
             // 
@@ -743,6 +712,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnShowTable.TabIndex = 2;
             this.btnShowTable.Text = "Xem";
             this.btnShowTable.UseVisualStyleBackColor = true;
+            this.btnShowTable.Click += new System.EventHandler(this.btnShowTable_Click);
             // 
             // btnEditTable
             // 
@@ -920,6 +890,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnShowAccount.TabIndex = 2;
             this.btnShowAccount.Text = "Xem";
             this.btnShowAccount.UseVisualStyleBackColor = true;
+            this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -989,8 +960,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel18.ResumeLayout(false);
             this.tpTable.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.panel16.ResumeLayout(false);
@@ -1065,14 +1034,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Button btnDeleteCategory;
         private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.ComboBox cbTableStatus;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.TextBox txbTableName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbTableID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.DataGridView dtgvTable;

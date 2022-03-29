@@ -16,6 +16,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
     public partial class Admin : Form
     {
         BindingSource foodList = new BindingSource();
+        BindingSource accountlist = new BindingSource();
+        BindingSource categorylist = new BindingSource();
+        BindingSource tablelist = new BindingSource();
         public Admin()
         {
             InitializeComponent();
@@ -33,13 +36,31 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         }
         void load()
         {
-            dtgvFood.DataSource = foodList;            
+            dtgvFood.DataSource = foodList;
+            dtgvAccount.DataSource = accountlist;
+            dtgvCategory.DataSource = categorylist;
+            dtgvTable.DataSource = tablelist;
+
+            dropDownList();
             LoadDateTimePikerBill();
             LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
+
             LoadListFood();
+            LoadAcount();
+            LoadCategory();
+            LoadTable();
 
             LoadCategoryIntoCombobox(cbFoodCategory);
+
             AddFoodBiding();
+            AddAccountBiding();
+            AddCategoryBiding();
+            AddTableBiding();
+        }
+
+        void dropDownList()
+        {
+            cbAccountType.DropDownStyle = ComboBoxStyle.DropDownList;         
         }
 
         void AddFoodBiding()
@@ -47,6 +68,41 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             txbFoodName.DataBindings.Add(new Binding("Text" , dtgvFood.DataSource,  "Name", true, DataSourceUpdateMode.Never));
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+        }
+
+        void AddAccountBiding()
+        {
+            txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            cbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "TYPE", true, DataSourceUpdateMode.Never));
+        }
+
+        void AddCategoryBiding()
+        {
+            txbCategoryID.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txbNameCategory.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "name", true, DataSourceUpdateMode.Never));
+        }
+
+        void AddTableBiding()
+        {
+            txbTableID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txbTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "name", true, DataSourceUpdateMode.Never));
+        }
+
+        void LoadAcount()
+        {
+            accountlist.DataSource = AccountDAO.Instance.GetListAccount();
+        }
+
+        void LoadCategory()
+        {
+            categorylist.DataSource = CategoryDAO.Instance.GetListFoodCategory();
+        }
+
+        void LoadTable()
+        {
+            tablelist.DataSource = TableDAO.Instance.GetListTableFood();
+
         }
 
         void LoadCategoryIntoCombobox(ComboBox cb)
@@ -203,9 +259,22 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         {
             foodList.DataSource =  SearchFoodByName(txbSearchNameFood.Text);
         }
+        private void btnShowAccount_Click(object sender, EventArgs e)
+        {
+            LoadAcount();
+        }
+
 
         #endregion
 
-        
+        private void btnShowCategory_Click(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
+
+        private void btnShowTable_Click(object sender, EventArgs e)
+        {
+            LoadTable();
+        }
     }
 }

@@ -40,5 +40,10 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             return tablelist;
         }
+
+        public DataTable GetListTableFood()
+        {
+            return DataProvider.Instance.ExecuteQuery("select id, name  from TableFood");
+        }
     }
 }
