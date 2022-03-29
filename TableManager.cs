@@ -262,35 +262,49 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table;
-
-            if(table == null)
+            if(cbFood.Text != "")
             {
-                MessageBox.Show("Hãy chọn bàn.", "Thông báo");
-                return;
-            }
-            int idBill = BillDAO.Instance.GetUnCheckBillIDByTableID(table.ID);
+                Table table = lsvBill.Tag as Table;
 
-            int foodID = (cbFood.SelectedItem as Food).ID;
-            int count = (int)nmFoodCount.Value;
+                if (table == null)
+                {
+                    MessageBox.Show("Hãy chọn bàn.", "Thông báo");
+                    return;
+                }
+                int idBill = BillDAO.Instance.GetUnCheckBillIDByTableID(table.ID);
 
-            if(idBill == -1)
-            {
-                BillDAO.Instance.InsertBill(table.ID);
-                BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+                int foodID = (cbFood.SelectedItem as Food).ID;
+                int count = (int)nmFoodCount.Value;
+
+                if (idBill == -1)
+                {
+                    BillDAO.Instance.InsertBill(table.ID);
+                    BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+                }
+                else
+                {
+                    BillInfoDAO.Instance.InsertBillInfo(idBill, foodID, count);
+                }
+
+                ShowBill(table.ID);
+
+                LoadTable();
             } else
             {
-                BillInfoDAO.Instance.InsertBillInfo(idBill, foodID, count);
+                MessageBox.Show("Bạn hãy chọn món.", "Thông báo");
             }
-
-            ShowBill(table.ID);
-
-            LoadTable();
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             Table table = lsvBill.Tag as Table;
+
+            if(table == null)
+            {
+                MessageBox.Show("Hãy chọn bàn để thanh toán.", "Thông báo");
+                return;
+            }
+
             int idBill = BillDAO.Instance.GetUnCheckBillIDByTableID(table.ID);
             int discount = (int)nmDisCount.Value;
 

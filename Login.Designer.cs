@@ -137,7 +137,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnRegister;
             this.ClientSize = new System.Drawing.Size(443, 159);
             this.Controls.Add(this.panel1);
             this.Name = "Login";
