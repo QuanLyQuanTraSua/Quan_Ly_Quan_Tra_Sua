@@ -33,11 +33,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         {
             adminToolStripMenuItem.Enabled = type == 1;
             TypeLastName(LoginAccount.DisplayName);
-
-
         }
 
-        void TypeLastName(string name)
+        public void TypeLastName(string name)
         {
             string LastName = name.Trim();
             int index = LastName.LastIndexOf(" ");

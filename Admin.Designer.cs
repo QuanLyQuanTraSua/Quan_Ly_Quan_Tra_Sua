@@ -95,6 +95,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel22 = new System.Windows.Forms.Panel();
             this.btnResetPassWord = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.nmTypeAccount = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.panel25 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -109,7 +110,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.nmTypeAccount = new System.Windows.Forms.NumericUpDown();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -143,12 +143,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.tpAccount.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).BeginInit();
             this.panel25.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel29.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -351,6 +351,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // txbFoodID
             // 
+            this.txbFoodID.Enabled = false;
             this.txbFoodID.Location = new System.Drawing.Point(91, 9);
             this.txbFoodID.Name = "txbFoodID";
             this.txbFoodID.ReadOnly = true;
@@ -522,6 +523,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // txbCategoryID
             // 
+            this.txbCategoryID.Enabled = false;
             this.txbCategoryID.Location = new System.Drawing.Point(133, 9);
             this.txbCategoryID.Name = "txbCategoryID";
             this.txbCategoryID.ReadOnly = true;
@@ -666,6 +668,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // txbTableID
             // 
+            this.txbTableID.Enabled = false;
             this.txbTableID.Location = new System.Drawing.Point(133, 9);
             this.txbTableID.Name = "txbTableID";
             this.txbTableID.ReadOnly = true;
@@ -793,6 +796,19 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(296, 71);
             this.panel24.TabIndex = 3;
+            // 
+            // nmTypeAccount
+            // 
+            this.nmTypeAccount.Location = new System.Drawing.Point(127, 21);
+            this.nmTypeAccount.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmTypeAccount.Name = "nmTypeAccount";
+            this.nmTypeAccount.ReadOnly = true;
+            this.nmTypeAccount.Size = new System.Drawing.Size(144, 21);
+            this.nmTypeAccount.TabIndex = 1;
             // 
             // label11
             // 
@@ -924,19 +940,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // nmTypeAccount
-            // 
-            this.nmTypeAccount.Location = new System.Drawing.Point(127, 21);
-            this.nmTypeAccount.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmTypeAccount.Name = "nmTypeAccount";
-            this.nmTypeAccount.ReadOnly = true;
-            this.nmTypeAccount.Size = new System.Drawing.Size(144, 21);
-            this.nmTypeAccount.TabIndex = 1;
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -988,6 +991,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.tpAccount.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).EndInit();
             this.panel25.ResumeLayout(false);
             this.panel25.PerformLayout();
             this.panel26.ResumeLayout(false);
@@ -995,7 +999,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel29.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).EndInit();
             this.ResumeLayout(false);
 
         }

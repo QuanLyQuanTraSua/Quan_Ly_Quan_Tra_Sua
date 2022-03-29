@@ -50,8 +50,10 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                         {
                             hasPass += items;
                         }
+
                         AddAccount(userName, display, hasPass);
                         MessageBox.Show("Đăng ký tài khoản thành công.", "Thông báo");
+                        this.Close();
                     }
                     else
                     {

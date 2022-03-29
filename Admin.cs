@@ -160,7 +160,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         void EditAccount(string userName, string displayName, int type)
         {
-
+            if (loginAccount.UserName.Equals(userName))
+            {
+                MessageBox.Show("Không thể sửa tài khoản của chính mình tại mục này.", "Lỗi");
+                return;
+            }
             if (AccountDAO.Instance.UpdateAccount(userName, displayName, type))
             {
                 MessageBox.Show("Sửa tài khoản thành công.", "Thông báo");
@@ -543,6 +547,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
+
             string userName = txbUserName.Text;
             string displayName = txbDisplayName.Text;
             int type = (int)nmTypeAccount.Value;
