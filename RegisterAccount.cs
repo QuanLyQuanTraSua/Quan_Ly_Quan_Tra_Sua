@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             string display = txbDisplay.Text;
             string pass = txbPass.Text;
             string repass = txbRePassW.Text;
+
+
             if (userName == "" || display == "" || pass == "" || repass == "")
             {
                 MessageBox.Show("Vui lòng điền đủ thông tin.", "Thông báo");
@@ -40,7 +43,14 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 {
                     if (pass.Equals(repass))
                     {
-                        AddAccount(userName, display, pass);
+                        byte[] temp = ASCIIEncoding.ASCII.GetBytes(pass);
+                        byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
+                        string hasPass = "";
+                        foreach (byte items in hasData)
+                        {
+                            hasPass += items;
+                        }
+                        AddAccount(userName, display, hasPass);
                         MessageBox.Show("Đăng ký tài khoản thành công.", "Thông báo");
                     }
                     else

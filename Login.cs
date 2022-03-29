@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         {
             InitializeComponent();
         }
-
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string userName = txbUserName.Text;

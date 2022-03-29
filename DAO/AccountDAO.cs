@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,8 +22,15 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public bool login(string userName, string passWord)
         {
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(passWord);
+            byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
+            string hasPass = "";
+            foreach(byte items in hasData)
+            {
+                hasPass += items;
+            }
             string query = "exec USP_LoginAccount @userName , @passWWord";
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord });
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, hasPass });
 
             return result.Rows.Count > 0;
         }
@@ -69,7 +77,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         }
         public bool InsertAccount(string name, string displayName, int type)
         {
-            string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', '1', {2})", name, displayName, type);
+            string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', N'1962026656160185351301320480154111117132155', {2})", name, displayName, type);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -100,7 +108,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public bool ResetPassWord(string name)
         {
-            string query = string.Format("update Account set PassWWord = N'0' where UserName = N'{0}'", name);
+            string query = string.Format("update Account set PassWWord = N'{0}' where UserName = N'{1}'", "1962026656160185351301320480154111117132155", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
