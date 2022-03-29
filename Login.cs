@@ -42,17 +42,19 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             return AccountDAO.Instance.login(userName, passWord);
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn thoát phần mềm ?", "Thông báo", MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 e.Cancel = true;
             }
+        }
+
+
+        private void btnRegister_Click_1(object sender, EventArgs e)
+        {
+            RegisterAccount f = new RegisterAccount();
+            f.Show();
         }
     }
 }

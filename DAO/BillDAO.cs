@@ -38,11 +38,26 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
+        public List<Bill> GetBillByIDTable(int id)
+        {
+            List<Bill> list = new List<Bill>();
+
+            string query = "select * from Bill where status = 0 and idTable = " + id;
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow items in data.Rows)
+            {
+                Bill food = new Bill(items);
+                list.Add(food);
+            }
+
+            return list;
+        }
+
         public DataTable GetBillListByDate(DateTime checkIn, DateTime checkOut)
         {
             return DataProvider.Instance.ExecuteQuery("exec USP_getListBillByDate @checkIn , @checkOut", new object[] { checkIn, checkOut});
-
-
         }
 
         public void InsertBill(int id)
@@ -61,5 +76,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
                 return 1;
             } 
         }
+
     }
 }

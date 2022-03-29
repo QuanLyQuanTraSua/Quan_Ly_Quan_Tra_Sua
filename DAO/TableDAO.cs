@@ -41,9 +41,48 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             return tablelist;
         }
 
-        public DataTable GetListTableFood()
+        public List<Table> GetListTable()
         {
-            return DataProvider.Instance.ExecuteQuery("select id, name as [Tên bàn]  from TableFood");
+            List<Table> list = new List<Table>();
+
+            string query = "select * from TableFood";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow items in data.Rows)
+            {
+                Table table = new Table(items);
+                list.Add(table);
+            }
+
+            return list;
+        }
+
+
+        public bool InsertTable(string name)
+        {
+            string query = string.Format("insert TableFood(name) values(N'{0}')", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool UpdateTable(int idTable, string name)
+        {
+            string query = string.Format("update TableFood set name = N'{0}' where id = {1}", name, idTable);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteTable(int idTable)
+        {
+            BillInfoDAO.Instance.DeleteBillInfoByIDTable(idTable);
+
+            string query = string.Format("delete TableFood where id = {0}", idTable);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
         }
     }
 }

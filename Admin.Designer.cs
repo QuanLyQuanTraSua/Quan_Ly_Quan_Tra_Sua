@@ -109,7 +109,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nmTypeAccount = new System.Windows.Forms.NumericUpDown();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -148,7 +148,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel29.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -585,6 +585,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditCategory.TabIndex = 3;
             this.btnEditCategory.Text = "Sửa";
             this.btnEditCategory.UseVisualStyleBackColor = true;
+            this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
             // btnDeleteCategory
             // 
@@ -594,6 +595,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnDeleteCategory.TabIndex = 1;
             this.btnDeleteCategory.Text = "Xóa";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -603,6 +605,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "Thêm";
             this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // tpTable
             // 
@@ -726,6 +729,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditTable.TabIndex = 3;
             this.btnEditTable.Text = "Sửa";
             this.btnEditTable.UseVisualStyleBackColor = true;
+            this.btnEditTable.Click += new System.EventHandler(this.btnEditTable_Click);
             // 
             // btnDeleteTable
             // 
@@ -735,6 +739,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnDeleteTable.TabIndex = 1;
             this.btnDeleteTable.Text = "Xóa";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
             // 
             // btnAddTable
             // 
@@ -744,6 +749,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddTable.TabIndex = 0;
             this.btnAddTable.Text = "Thêm";
             this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
             // 
             // tpAccount
             // 
@@ -771,7 +777,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // btnResetPassWord
             // 
-            this.btnResetPassWord.Location = new System.Drawing.Point(229, 147);
+            this.btnResetPassWord.Location = new System.Drawing.Point(230, 176);
             this.btnResetPassWord.Name = "btnResetPassWord";
             this.btnResetPassWord.Size = new System.Drawing.Size(71, 43);
             this.btnResetPassWord.TabIndex = 4;
@@ -781,22 +787,21 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // panel24
             // 
-            this.panel24.Controls.Add(this.numericUpDown1);
+            this.panel24.Controls.Add(this.nmTypeAccount);
             this.panel24.Controls.Add(this.label11);
             this.panel24.Location = new System.Drawing.Point(4, 99);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(296, 42);
+            this.panel24.Size = new System.Drawing.Size(296, 71);
             this.panel24.TabIndex = 3;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 9);
+            this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(122, 19);
+            this.label11.Size = new System.Drawing.Size(128, 68);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Loại tài khoản:";
+            this.label11.Text = "Loại tài khoản: 1: Admin            0: Nhân viên";
             // 
             // panel25
             // 
@@ -919,17 +924,18 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // numericUpDown1
+            // nmTypeAccount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(132, 9);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nmTypeAccount.Location = new System.Drawing.Point(127, 21);
+            this.nmTypeAccount.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown1.TabIndex = 1;
+            this.nmTypeAccount.Name = "nmTypeAccount";
+            this.nmTypeAccount.ReadOnly = true;
+            this.nmTypeAccount.Size = new System.Drawing.Size(144, 21);
+            this.nmTypeAccount.TabIndex = 1;
             // 
             // Admin
             // 
@@ -982,7 +988,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.tpAccount.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
             this.panel25.ResumeLayout(false);
             this.panel25.PerformLayout();
             this.panel26.ResumeLayout(false);
@@ -990,7 +995,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel29.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1077,6 +1082,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.Button btnResetPassWord;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nmTypeAccount;
     }
 }

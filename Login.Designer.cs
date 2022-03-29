@@ -30,7 +30,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txbPassWord = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
@@ -54,17 +54,17 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel1.Size = new System.Drawing.Size(419, 135);
             this.panel1.TabIndex = 0;
             // 
-            // btnExit
+            // btnRegister
             // 
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(259, 99);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(82, 23);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnRegister.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnRegister.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(259, 99);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(82, 23);
+            this.btnRegister.TabIndex = 4;
+            this.btnRegister.Text = "Đăng ký";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click_1);
             // 
             // btnLogin
             // 
@@ -137,7 +137,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnExit;
+            this.CancelButton = this.btnRegister;
             this.ClientSize = new System.Drawing.Size(443, 159);
             this.Controls.Add(this.panel1);
             this.Name = "Login";
@@ -162,7 +162,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txbUserName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnLogin;
     }
 }

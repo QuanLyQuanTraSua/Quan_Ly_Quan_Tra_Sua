@@ -10,6 +10,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
     public class FoodDAO
     {
+        public int Food;
         private static FoodDAO instance;
         public static FoodDAO Instance
         {
@@ -17,6 +18,25 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             private set { instance = value; }
         }
         private FoodDAO() { }
+
+
+        public void DeleteFoodForByIDCategory(int id)
+        {
+            List<Food> listfood = GetFoodByCategoryID(id);
+            foreach (Food items in listfood)
+            {
+                BillInfoDAO.Instance.DeleteBillInfoByFoodID(items.ID);
+            }
+            DeleteFoodByIDCategory(id);
+        }
+
+        public void DeleteFoodByIDCategory(int id)
+        {
+            DataProvider.Instance.ExecuteQuery("delete Food where idCategory = " + id);
+        }
+
+        
+
 
         public List<Food> GetFoodByCategoryID(int id)
         {

@@ -17,7 +17,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             private set { instance = value; }
         }
         private CategoryDAO() { }
-
         public List<Category> GetListCategory()
         {
             List<Category> list = new List<Category>();
@@ -52,9 +51,31 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             return category;
         }
 
-        public DataTable GetListFoodCategory()
+        public bool InsertCategory(string name)
         {
-            return DataProvider.Instance.ExecuteQuery("select id, name as [Danh mục thức ăn]  from FoodCategory");
+            string query = string.Format("insert FoodCategory(name) values(N'{0}')", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
         }
+
+        public bool UpdateCategory(int idCategory, string name)
+        {
+            string query = string.Format("update FoodCategory set name = N'{0}' where id = {1}", name, idCategory);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteCategory(int idCategory)
+        {
+            FoodDAO.Instance.DeleteFoodForByIDCategory(idCategory);
+
+            string query = string.Format("delete FoodCategory where id = {0}", idCategory);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
     }
 }

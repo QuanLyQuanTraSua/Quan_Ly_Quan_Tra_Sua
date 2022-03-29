@@ -41,7 +41,24 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public DataTable GetListAccount()
         {
-            return DataProvider.Instance.ExecuteQuery("select UserName as [Tên tài khoản], DisplayName as [Tên hiển thị], TYPE as [Loại tài khoản] from Account");
+            return DataProvider.Instance.ExecuteQuery("select UserName , DisplayName , TYPE  from Account");
+        }
+
+        public List<Account> GetlistAccount()
+        {
+            List<Account> list = new List<Account>();
+
+            string query = "select * from Account";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow items in data.Rows)
+            {
+                Account category = new Account(items);
+                list.Add(category);
+            }
+
+            return list;
         }
 
         public bool UpdateAccount(string userName, string displayName, string passWord, string newPassWord)
@@ -53,6 +70,13 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         public bool InsertAccount(string name, string displayName, int type)
         {
             string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', '1', {2})", name, displayName, type);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public bool RegisterAccount(string name, string displayName, string passWord)
+        {
+            string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', N'{2}', 0)", name, displayName, passWord);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

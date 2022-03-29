@@ -70,7 +70,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         }
 
-        void LoadTable()
+        public void LoadTable()
         {
 
             flpTable.Controls.Clear();
@@ -141,7 +141,79 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             f.InsertFood += F_InsertFood;
             f.DeleteFood += F_DeleteFood;
             f.UpdateFood += F_UpdateFood;
+
+            f.InsertCategory += F_InsertCategory;
+            f.DeleteCategory += F_DeleteCategory;
+            f.UpdateCategory += F_UpdateCategory;
+
+            f.InsertTable += F_InsertTable;
+            f.DeleteTable += F_DeleteTable;
+            f.UpdateTable += F_UpdateTable;
             f.ShowDialog();
+        }
+
+        void F_InsertTable(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+            LoadTable();
+        }
+
+        void F_DeleteTable(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+            LoadTable();
+        }
+
+        void F_UpdateTable(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+            LoadTable();
+
+        }
+
+        void F_InsertCategory(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+        }
+        void F_DeleteCategory(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
+
+            LoadTable();
+        }
+        void F_UpdateCategory(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lsvBill.Tag != null)
+            {
+                ShowBill((lsvBill.Tag as Table).ID);
+            }
         }
 
         void F_InsertFood(object sender, EventArgs e)
