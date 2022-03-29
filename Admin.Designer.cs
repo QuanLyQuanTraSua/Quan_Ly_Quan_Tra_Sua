@@ -95,7 +95,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel22 = new System.Windows.Forms.Panel();
             this.btnResetPassWord = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
-            this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel25 = new System.Windows.Forms.Panel();
             this.txbDisplayName = new System.Windows.Forms.TextBox();
@@ -110,6 +109,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -148,6 +148,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -403,6 +404,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // dtgvFood
             // 
+            this.dtgvFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvFood.Location = new System.Drawing.Point(3, 3);
             this.dtgvFood.Name = "dtgvFood";
@@ -546,6 +548,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // dtgvCategory
             // 
+            this.dtgvCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvCategory.Location = new System.Drawing.Point(3, 3);
             this.dtgvCategory.Name = "dtgvCategory";
@@ -686,6 +689,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // dtgvTable
             // 
+            this.dtgvTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvTable.Location = new System.Drawing.Point(3, 3);
             this.dtgvTable.Name = "dtgvTable";
@@ -773,23 +777,16 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnResetPassWord.TabIndex = 4;
             this.btnResetPassWord.Text = "Đặt lại mật khẩu";
             this.btnResetPassWord.UseVisualStyleBackColor = true;
+            this.btnResetPassWord.Click += new System.EventHandler(this.btnResetPassWord_Click);
             // 
             // panel24
             // 
-            this.panel24.Controls.Add(this.cbAccountType);
+            this.panel24.Controls.Add(this.numericUpDown1);
             this.panel24.Controls.Add(this.label11);
             this.panel24.Location = new System.Drawing.Point(4, 99);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(296, 42);
             this.panel24.TabIndex = 3;
-            // 
-            // cbAccountType
-            // 
-            this.cbAccountType.FormattingEnabled = true;
-            this.cbAccountType.Location = new System.Drawing.Point(127, 7);
-            this.cbAccountType.Name = "cbAccountType";
-            this.cbAccountType.Size = new System.Drawing.Size(144, 23);
-            this.cbAccountType.TabIndex = 1;
             // 
             // label11
             // 
@@ -840,7 +837,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             this.txbUserName.Location = new System.Drawing.Point(127, 9);
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.ReadOnly = true;
             this.txbUserName.Size = new System.Drawing.Size(144, 21);
             this.txbUserName.TabIndex = 1;
             // 
@@ -864,6 +860,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // 
             // dtgvAccount
             // 
+            this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvAccount.Location = new System.Drawing.Point(3, 3);
             this.dtgvAccount.Name = "dtgvAccount";
@@ -900,6 +897,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditAccount.TabIndex = 3;
             this.btnEditAccount.Text = "Sửa";
             this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
@@ -909,6 +907,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnDeleteAccount.TabIndex = 1;
             this.btnDeleteAccount.Text = "Xóa";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnAddAccount
             // 
@@ -918,6 +917,19 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(132, 9);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown1.TabIndex = 1;
             // 
             // Admin
             // 
@@ -978,6 +990,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel29.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1049,7 +1062,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.ComboBox cbAccountType;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.TextBox txbDisplayName;
@@ -1065,5 +1077,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.Button btnResetPassWord;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

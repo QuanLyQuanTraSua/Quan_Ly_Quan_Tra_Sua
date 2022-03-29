@@ -39,7 +39,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         {
             List<Food> list = new List<Food>();
 
-            string query = "select * from Food ";
+            string query = "select * from Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -51,6 +51,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             return list;
         }
+
 
         public List<Food> SearchFoodByName(string name)
         {

@@ -54,7 +54,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public DataTable GetListFoodCategory()
         {
-            return DataProvider.Instance.ExecuteQuery("select id, name  from FoodCategory");
+            return DataProvider.Instance.ExecuteQuery("select id, name as [Danh mục thức ăn]  from FoodCategory");
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public DataTable GetListTableFood()
         {
-            return DataProvider.Instance.ExecuteQuery("select id, name  from TableFood");
+            return DataProvider.Instance.ExecuteQuery("select id, name as [Tên bàn]  from TableFood");
         }
     }
 }

@@ -41,12 +41,43 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public DataTable GetListAccount()
         {
-            return DataProvider.Instance.ExecuteQuery("select UserName, DisplayName, TYPE from Account");
+            return DataProvider.Instance.ExecuteQuery("select UserName as [Tên tài khoản], DisplayName as [Tên hiển thị], TYPE as [Loại tài khoản] from Account");
         }
 
         public bool UpdateAccount(string userName, string displayName, string passWord, string newPassWord)
         {
             int result = DataProvider.Instance.ExecuteNonQuery("exec USP_UpdateAccount @userName , @displayName , @passWord , @newPassWord ", new object[] {userName, displayName, passWord, newPassWord  });
+
+            return result > 0;
+        }
+        public bool InsertAccount(string name, string displayName, int type)
+        {
+            string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', '1', {2})", name, displayName, type);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool UpdateAccount(string name, string displayName, int type)
+        {
+            string query = string.Format("update Account set DisplayName = N'{0}', TYPE = {1} where UserName = N'{2}'", displayName, type, name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteAccount(string name)
+        {
+            string query = string.Format("delete Account where UserName = N'{0}'", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool ResetPassWord(string name)
+        {
+            string query = string.Format("update Account set PassWWord = N'0' where UserName = N'{0}'", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }

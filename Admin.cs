@@ -19,6 +19,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         BindingSource accountlist = new BindingSource();
         BindingSource categorylist = new BindingSource();
         BindingSource tablelist = new BindingSource();
+
+
+        public Account loginAccount;
         public Admin()
         {
             InitializeComponent();
@@ -41,7 +44,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             dtgvCategory.DataSource = categorylist;
             dtgvTable.DataSource = tablelist;
 
-            dropDownList();
             LoadDateTimePikerBill();
             LoadListBillByDate(dtpkFromDate.Value, dtpkToDate.Value);
 
@@ -58,35 +60,98 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             AddTableBiding();
         }
 
-        void dropDownList()
+        void AddAccount(string userName, string displayName, int type)
         {
-            cbAccountType.DropDownStyle = ComboBoxStyle.DropDownList;         
+            bool check = AccountDAO.Instance.InsertAccount(userName, displayName, type);
+            if (check)
+            {
+                MessageBox.Show("Thêm tài khoản thành công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm tài khoản thất bại");
+            }
+
+            LoadAcount();
         }
+
+        void EditAccount(string userName, string displayName, int type)
+        {
+            bool check = AccountDAO.Instance.UpdateAccount(userName, displayName, type);
+            if (check)
+            {
+                MessageBox.Show("Sửa tài khoản thành công");
+            }
+            else
+            {
+                MessageBox.Show("Sửa tài khoản thất bại");
+            }
+
+            LoadAcount();
+        }
+
+        void DeleteAccount(string userName)
+        {
+            if (loginAccount.UserName.Equals(userName))
+            {
+                MessageBox.Show("Tài khoản đang hoạt động không thể xóa được.");
+            }
+            else
+            {
+                bool check = AccountDAO.Instance.DeleteAccount(userName);
+                if (check)
+                {
+                    MessageBox.Show("Xóa tài khoản thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Xóa tài khoản thất bại");
+                }
+            }
+
+            LoadAcount();
+        }
+
+        void ResetAccount(string userName)
+        {
+            bool check = AccountDAO.Instance.ResetPassWord(userName);
+            if (check)
+            {
+                MessageBox.Show("Reset tài khoản thành công");
+            }
+            else
+            {
+                MessageBox.Show("Reset tài khoản thất bại");
+            }
+
+            LoadAcount();
+        }
+
 
         void AddFoodBiding()
         {
-            txbFoodName.DataBindings.Add(new Binding("Text" , dtgvFood.DataSource,  "Name", true, DataSourceUpdateMode.Never));
-            txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
-            nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+            txbFoodName.DataBindings.Add(new Binding("Text" , dtgvFood.DataSource,  "name", true, DataSourceUpdateMode.Never));
+            txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "id", true, DataSourceUpdateMode.Never));
+            nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "price", true, DataSourceUpdateMode.Never));
         }
 
         void AddAccountBiding()
         {
-            txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
-            txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
-            cbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "TYPE", true, DataSourceUpdateMode.Never));
+            txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Tên tài khoản", true, DataSourceUpdateMode.Never));
+            txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Tên hiển thị", true, DataSourceUpdateMode.Never));
+            numericUpDown1.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "Loại tài khoản", true, DataSourceUpdateMode.Never));
         }
 
         void AddCategoryBiding()
         {
             txbCategoryID.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "id", true, DataSourceUpdateMode.Never));
-            txbNameCategory.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "name", true, DataSourceUpdateMode.Never));
+            txbNameCategory.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "Danh mục thức ăn", true, DataSourceUpdateMode.Never));
         }
 
         void AddTableBiding()
         {
             txbTableID.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "id", true, DataSourceUpdateMode.Never));
-            txbTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "name", true, DataSourceUpdateMode.Never));
+            txbTableName.DataBindings.Add(new Binding("Text", dtgvTable.DataSource, "Tên bàn", true, DataSourceUpdateMode.Never));
         }
 
         void LoadAcount()
@@ -275,6 +340,37 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void btnShowTable_Click(object sender, EventArgs e)
         {
             LoadTable();
+        }
+
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            string displayName = txbDisplayName.Text;
+            int type = (int)(numericUpDown1.Value);
+
+            AddAccount(userName, displayName, type);
+        }
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+
+            DeleteAccount(userName);
+        }
+
+        private void btnEditAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            string displayName = txbDisplayName.Text;
+            int type = (int)(numericUpDown1.Value);
+
+            EditAccount(userName, displayName, type);
+        }
+
+        private void btnResetPassWord_Click(object sender, EventArgs e)
+        {
+            string userName = txbUserName.Text;
+            ResetAccount(userName);
         }
     }
 }

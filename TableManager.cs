@@ -137,6 +137,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Admin f = new Admin();
+            f.loginAccount = LoginAccount;
             f.InsertFood += F_InsertFood;
             f.DeleteFood += F_DeleteFood;
             f.UpdateFood += F_UpdateFood;
