@@ -229,6 +229,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             {
                 if (dtgvFood.SelectedCells.Count > 0)
                 {
+                    var idfood = dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+                    if (idfood == null)
+                    {
+                        return;
+                    }
                     int id = (int)dtgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
 
                     Category category = CategoryDAO.Instance.GetCategoryByID(id);
@@ -249,20 +254,23 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                     }
 
                     cbFoodCategory.SelectedIndex = index;
-                } else
-                {
-                    return;
                 }
             }
             catch
             {
                 MessageBox.Show("Đã hết món ăn");
+                return;
             }
             
         }
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             string name = txbFoodName.Text;
+            if(cbFoodCategory.Text == null || cbFoodCategory.Text == "")
+            {
+                MessageBox.Show("Bạn phải thêm danh mục trước khi thêm món.", "Thông báo");
+                return;
+            } 
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nmFoodPrice.Value;
 
