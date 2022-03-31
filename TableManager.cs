@@ -65,7 +65,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             cbFood.DataSource = listFood;
             cbFood.DisplayMember = "Name";
             cbFood.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
 
         public void LoadTable()
@@ -136,6 +135,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         {
             Admin f = new Admin();
             f.loginAccount = LoginAccount;
+
             f.InsertFood += F_InsertFood;
             f.DeleteFood += F_DeleteFood;
             f.UpdateFood += F_UpdateFood;
@@ -147,12 +147,17 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             f.InsertTable += F_InsertTable;
             f.DeleteTable += F_DeleteTable;
             f.UpdateTable += F_UpdateTable;
+
             f.ShowDialog();
         }
 
         void F_InsertTable(object sender, EventArgs e)
         {
             LoadCategory();
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
@@ -164,6 +169,10 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         void F_DeleteTable(object sender, EventArgs e)
         {
             LoadCategory();
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
@@ -174,7 +183,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         void F_UpdateTable(object sender, EventArgs e)
         {
+            
             LoadCategory();
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
@@ -187,15 +201,24 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         void F_InsertCategory(object sender, EventArgs e)
         {
             LoadCategory();
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
                 ShowBill((lsvBill.Tag as Table).ID);
             }
+            LoadTable();
         }
         void F_DeleteCategory(object sender, EventArgs e)
         {
             LoadCategory();
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
@@ -207,24 +230,38 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         void F_UpdateCategory(object sender, EventArgs e)
         {
             LoadCategory();
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
                 ShowBill((lsvBill.Tag as Table).ID);
             }
+            LoadTable();
         }
 
         void F_InsertFood(object sender, EventArgs e)
         {
+            if(cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
                 ShowBill((lsvBill.Tag as Table).ID);
             }
+            LoadTable();
         }
 
         void F_DeleteFood(object sender, EventArgs e)
         {
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {
@@ -235,6 +272,10 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         void F_UpdateFood(object sender, EventArgs e)
         {
+            if (cbCategory.SelectedItem == null)
+            {
+                return;
+            }
             LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
             if (lsvBill.Tag != null)
             {

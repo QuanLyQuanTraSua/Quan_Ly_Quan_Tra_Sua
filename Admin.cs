@@ -249,11 +249,14 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                     }
 
                     cbFoodCategory.SelectedIndex = index;
+                } else
+                {
+                    return;
                 }
             }
             catch
             {
-
+                MessageBox.Show("Đã hết món ăn");
             }
             
         }
@@ -263,7 +266,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nmFoodPrice.Value;
 
-            if(FoodDAO.Instance.InsertFood(name, categoryID, price))
+            if (FoodDAO.Instance.InsertFood(name, categoryID, price))
             {
                 MessageBox.Show("Thêm món thành công", "Thông báo");
                 LoadListFood();
@@ -406,6 +409,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             if (TableDAO.Instance.UpdateTable(id, name))
             {
                 MessageBox.Show("Sửa bàn thành công", "Thông báo");
+                LoadListFood();
                 LoadListTable();
                 if (updateTable != null)
                 {
@@ -424,6 +428,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             if (TableDAO.Instance.DeleteTable(id))
             {
                 MessageBox.Show("Xóa bàn thành công", "Thông báo");
+                LoadListFood();
                 LoadListTable();
                 if (deleteTable != null)
                 {
@@ -444,6 +449,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             if (TableDAO.Instance.InsertTable(name))
             {
                 MessageBox.Show("Thêm bàn thành công", "Thông báo");
+                LoadListFood();
                 LoadListTable();
                 if (insertTable != null)
                 {
