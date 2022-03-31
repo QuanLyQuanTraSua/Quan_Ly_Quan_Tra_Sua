@@ -303,7 +303,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            if(cbFood.Text != "" && cbCategory.Text != "")
+            if (cbFood.Text != "" && cbCategory.Text != "")
             {
                 Table table = lsvBill.Tag as Table;
 
@@ -330,7 +330,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                 ShowBill(table.ID);
 
                 LoadTable();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Bạn hãy chọn món.", "Thông báo");
             }

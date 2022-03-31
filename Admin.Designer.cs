@@ -29,6 +29,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tcAdmin = new System.Windows.Forms.TabControl();
             this.tpBill = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -110,6 +112,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.GetListBillByDateForReport = new Phan_Mem_Quan_Ly_Quan_Tra_Sua.GetListBillByDateForReport();
+            this.USP_getListBillByDateForReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.USP_getListBillByDateForReportTableAdapter = new Phan_Mem_Quan_Ly_Quan_Tra_Sua.GetListBillByDateForReportTableAdapters.USP_getListBillByDateForReportTableAdapter();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -149,6 +156,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel29.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GetListBillByDateForReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USP_getListBillByDateForReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -158,6 +168,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.tcAdmin.Controls.Add(this.tpFoodCategory);
             this.tcAdmin.Controls.Add(this.tpTable);
             this.tcAdmin.Controls.Add(this.tpAccount);
+            this.tcAdmin.Controls.Add(this.tabPage1);
             this.tcAdmin.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcAdmin.Location = new System.Drawing.Point(12, 12);
             this.tcAdmin.Name = "tcAdmin";
@@ -208,7 +219,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             // btnViewBill
             // 
             this.btnViewBill.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewBill.Location = new System.Drawing.Point(335, 7);
+            this.btnViewBill.Location = new System.Drawing.Point(311, 7);
             this.btnViewBill.Name = "btnViewBill";
             this.btnViewBill.Size = new System.Drawing.Size(89, 23);
             this.btnViewBill.TabIndex = 2;
@@ -940,6 +951,44 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.reportViewer1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(737, 398);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Báo cáo(Report)";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "GetListBillByDateReport";
+            reportDataSource1.Value = this.USP_getListBillByDateForReportBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Phan_Mem_Quan_Ly_Quan_Tra_Sua.Report.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(3, 3);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(731, 392);
+            this.reportViewer1.TabIndex = 0;
+            // 
+            // GetListBillByDateForReport
+            // 
+            this.GetListBillByDateForReport.DataSetName = "GetListBillByDateForReport";
+            this.GetListBillByDateForReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // USP_getListBillByDateForReportBindingSource
+            // 
+            this.USP_getListBillByDateForReportBindingSource.DataMember = "USP_getListBillByDateForReport";
+            this.USP_getListBillByDateForReportBindingSource.DataSource = this.GetListBillByDateForReport;
+            // 
+            // USP_getListBillByDateForReportTableAdapter
+            // 
+            this.USP_getListBillByDateForReportTableAdapter.ClearBeforeFill = true;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -949,6 +998,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.Admin_Load);
             this.tcAdmin.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -999,6 +1049,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel29.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GetListBillByDateForReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USP_getListBillByDateForReportBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1086,5 +1139,10 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.Button btnResetPassWord;
         private System.Windows.Forms.NumericUpDown nmTypeAccount;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource USP_getListBillByDateForReportBindingSource;
+        private GetListBillByDateForReport GetListBillByDateForReport;
+        private GetListBillByDateForReportTableAdapters.USP_getListBillByDateForReportTableAdapter USP_getListBillByDateForReportTableAdapter;
     }
 }
