@@ -42,21 +42,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             string reEnterPass = txbReEnterPassWord.Text;
             string userName = txbUserName.Text;           
 
-            if (newPassWord == "" && reEnterPass != "" || newPassWord != "" && reEnterPass == "")
-            {
-                MessageBox.Show("Vui lòng điền đúng mật khẩu.", "Thông báo");
-                return;
-            }
-
-            if(passWord == "")
-            {
-                MessageBox.Show("Vui lòng điền mật khẩu.", "Thông báo");
-                return;
-            }
 
             if (!newPassWord.Equals(reEnterPass))
             {
                 MessageBox.Show("Vui lòng nhập lại mật khẩu đúng với mật khẩu mới", "Thông báo");
+                return;
             } else
             {
                 // Mã hóa PassWord
@@ -76,23 +66,31 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                     hasPass2 += items;
                 }
 
-                if (passWord.Equals(reEnterPass))
+                
+                if(reEnterPass == "")
                 {
-                    MessageBox.Show("Không được đặt mật khẩu mới trùng với mật khẩu cũ.", "Lỗi");
-                    return;
+                    if (AccountDAO.Instance.UpdateAccount(userName, displayName, hasPass, hasPass))
+                    {
+                        MessageBox.Show("Cập nhật thành công", "Thông báo");
+                        this.Close();
+                    } else
+                    {
+                        MessageBox.Show("Vui lòng nhập đúng mật khẩu", "Thông báo");
+                    }
+                } else {
+                    if (AccountDAO.Instance.UpdateAccount(userName, displayName, hasPass, hasPass2))
+                    {
+                        MessageBox.Show("Cập nhật thành công", "Thông báo");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng nhập đúng mật khẩu", "Thông báo");
+                    }
                 }
-
-                if (AccountDAO.Instance.UpdateAccount(userName, displayName, hasPass, hasPass2))
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo");
-                    this.Close();
-                } else
-                {
-                    MessageBox.Show("Vui lòng nhập đúng mật khẩu", "Thông báo");
-                }
+                              
             }
         }
-
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -104,7 +102,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             UpdateAccount();
             
         }
-
     }
 
 }

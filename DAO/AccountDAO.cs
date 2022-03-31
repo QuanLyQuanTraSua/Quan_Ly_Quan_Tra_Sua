@@ -75,6 +75,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             return result > 0;
         }
+
         public bool InsertAccount(string name, string displayName, int type)
         {
             string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', N'1962026656160185351301320480154111117132155', {2})", name, displayName, type);

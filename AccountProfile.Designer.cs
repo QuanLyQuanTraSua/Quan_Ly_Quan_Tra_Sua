@@ -30,10 +30,13 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txbDisplayName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txbPassWord = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txbNewPassWord = new System.Windows.Forms.TextBox();
@@ -43,9 +46,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.label5 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.txbUserName = new System.Windows.Forms.TextBox();
-            this.txbDisplayName = new System.Windows.Forms.TextBox();
-            this.txbPassWord = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -61,6 +61,18 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(346, 42);
             this.panel2.TabIndex = 1;
+            // 
+            // txbUserName
+            // 
+            this.txbUserName.Enabled = false;
+            this.txbUserName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbUserName.HideSelection = false;
+            this.txbUserName.Location = new System.Drawing.Point(143, 9);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.ReadOnly = true;
+            this.txbUserName.Size = new System.Drawing.Size(194, 21);
+            this.txbUserName.TabIndex = 2;
+            this.txbUserName.TabStop = false;
             // 
             // label1
             // 
@@ -82,6 +94,14 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel1.TabIndex = 1;
             this.panel1.TabStop = true;
             // 
+            // txbDisplayName
+            // 
+            this.txbDisplayName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDisplayName.Location = new System.Drawing.Point(143, 9);
+            this.txbDisplayName.Name = "txbDisplayName";
+            this.txbDisplayName.Size = new System.Drawing.Size(194, 21);
+            this.txbDisplayName.TabIndex = 1;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -101,6 +121,15 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.panel3.Size = new System.Drawing.Size(346, 42);
             this.panel3.TabIndex = 2;
             this.panel3.TabStop = true;
+            // 
+            // txbPassWord
+            // 
+            this.txbPassWord.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbPassWord.HideSelection = false;
+            this.txbPassWord.Location = new System.Drawing.Point(144, 9);
+            this.txbPassWord.Name = "txbPassWord";
+            this.txbPassWord.Size = new System.Drawing.Size(194, 21);
+            this.txbPassWord.TabIndex = 2;
             // 
             // label3
             // 
@@ -194,35 +223,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // txbUserName
-            // 
-            this.txbUserName.Enabled = false;
-            this.txbUserName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUserName.HideSelection = false;
-            this.txbUserName.Location = new System.Drawing.Point(143, 9);
-            this.txbUserName.Name = "txbUserName";
-            this.txbUserName.ReadOnly = true;
-            this.txbUserName.Size = new System.Drawing.Size(194, 21);
-            this.txbUserName.TabIndex = 2;
-            this.txbUserName.TabStop = false;
-            // 
-            // txbDisplayName
-            // 
-            this.txbDisplayName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbDisplayName.Location = new System.Drawing.Point(143, 9);
-            this.txbDisplayName.Name = "txbDisplayName";
-            this.txbDisplayName.Size = new System.Drawing.Size(194, 21);
-            this.txbDisplayName.TabIndex = 1;
-            // 
-            // txbPassWord
-            // 
-            this.txbPassWord.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbPassWord.HideSelection = false;
-            this.txbPassWord.Location = new System.Drawing.Point(143, 9);
-            this.txbPassWord.Name = "txbPassWord";
-            this.txbPassWord.Size = new System.Drawing.Size(194, 21);
-            this.txbPassWord.TabIndex = 2;
             // 
             // AccountProfile
             // 

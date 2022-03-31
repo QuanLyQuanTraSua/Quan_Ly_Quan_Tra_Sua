@@ -57,7 +57,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
                     }
                     else
                     {
-                        MessageBox.Show("Xác nhận mật khẩu không đúng.", "Thông báo");
+                        MessageBox.Show("Mật khẩu nhập lại chưa đúng.", "Thông báo");
                     }
                 }
                 else
