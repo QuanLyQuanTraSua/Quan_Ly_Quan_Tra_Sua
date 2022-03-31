@@ -145,6 +145,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             if(AccountDAO.Instance.GetAccountByUserName(userName) != null)
             {
                 MessageBox.Show("Tài khoản đã bị trùng vui lòng nhập lại.", "Lỗi");
+                return;
             }
 
             if(AccountDAO.Instance.InsertAccount(userName, DislayName, type))
