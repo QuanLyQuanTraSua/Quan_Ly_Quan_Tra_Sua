@@ -289,6 +289,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            string checkID = txbFoodID.Text;
+            if (checkID == "" || checkID == null)
+            {
+                MessageBox.Show("Không thể sửa vì không còn món nào.", "Thông báo");
+                return;
+            }
             string name = txbFoodName.Text;
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nmFoodPrice.Value;
@@ -298,6 +304,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             {
                 MessageBox.Show("Sửa món thành công", "Thông báo");
                 LoadListFood();
+                LoadListCategory();
+                LoadListTable();
                 if (updateFood != null)
                 {
                     updateFood(this, new EventArgs());
@@ -314,12 +322,26 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         }
         private void btnDeleteFood_Click(object sender, EventArgs e)
         {
+            string checkID = txbFoodID.Text;
+            if (checkID == "" || checkID == null)
+            {
+                MessageBox.Show("Không thể xóa vì không còn món nào.", "Thông báo");
+                return;
+            }
             int id = Convert.ToInt32(txbFoodID.Text);
+            
+            if(BillDAO.Instance.GetCheckCountBillByFoodID(id))
+            {
+                MessageBox.Show("Không xóa được món ăn vì đang có bàn đặt món này.", "Thông báo");
+                return;
+            }
 
             if (FoodDAO.Instance.DeleteFood(id))
             {
                 MessageBox.Show("Xóa món thành công", "Thông báo");
                 LoadListFood();
+                LoadListCategory();
+                LoadListTable();
                 if(deleteFood != null)
                 {
                     deleteFood(this, new EventArgs());
@@ -344,8 +366,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             if (CategoryDAO.Instance.InsertCategory(name))
             {
                 MessageBox.Show("Thêm danh mục thành công", "Thông báo");
-                LoadListCategory();
                 LoadListFood();
+                LoadListCategory();
+                LoadListTable();
                 LoadCategoryIntoCombobox(cbFoodCategory);
                 if (insertCategory != null)
                 {
@@ -359,6 +382,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         }
         private void btnEditCategory_Click(object sender, EventArgs e)
         {
+            string checkID = txbNameCategory.Text;
+            if (checkID == "" || checkID == null)
+            {
+                MessageBox.Show("Không thể sửa vì không còn danh mục nào.", "Thông báo");
+                return;
+            }
             string name = txbNameCategory.Text;
 
             int id = Convert.ToInt32(txbCategoryID.Text);
@@ -366,8 +395,9 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             if (CategoryDAO.Instance.UpdateCategory(id, name))
             {
                 MessageBox.Show("Sửa danh mục thành công", "Thông báo");
-                LoadListCategory();
                 LoadListFood();
+                LoadListCategory();
+                LoadListTable();
                 LoadCategoryIntoCombobox(cbFoodCategory);
                 if (updateCategory != null)
                 {
@@ -382,13 +412,25 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txbCategoryID.Text);
+            string checkID = txbCategoryID.Text;
+            if(checkID == "" || checkID == null)
+            {
+                MessageBox.Show("Không thể xóa vì không còn danh mục nào.", "Thông báo");
+                return;
+            }
 
+            int id = Convert.ToInt32(txbCategoryID.Text);
+            if(BillDAO.Instance.GetCheckCountBillByCategoryID(id))
+            {
+                MessageBox.Show("Không thể xóa danh mục vì đang có bàn đặt món ăn trong danh mục này.", "Thông báo");
+                return;
+            }
             if (CategoryDAO.Instance.DeleteCategory(id))
             {
                 MessageBox.Show("Xóa danh mục thành công", "Thông báo");
-                LoadListCategory();
                 LoadListFood();
+                LoadListCategory();
+                LoadListTable();
                 LoadCategoryIntoCombobox(cbFoodCategory);
                 if (deleteCategory != null)
                 {
@@ -410,14 +452,25 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnEditTable_Click(object sender, EventArgs e)
         {
+            string checkID = txbTableID.Text;
+            if (checkID == "" || checkID == null)
+            {
+                MessageBox.Show("Không thể sửa vì không còn bàn nào.", "Thông báo");
+                return;
+            }
             int id = Convert.ToInt32(txbTableID.Text);
             string name = txbTableName.Text;
-
+            if (name == "" || name == null)
+            {
+                MessageBox.Show("Bạn chưa có tên bàn.", "Thông báo");
+                return;
+            }
 
             if (TableDAO.Instance.UpdateTable(id, name))
             {
                 MessageBox.Show("Sửa bàn thành công", "Thông báo");
                 LoadListFood();
+                LoadListCategory();
                 LoadListTable();
                 if (updateTable != null)
                 {
@@ -432,11 +485,25 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
+            string checkID = txbTableID.Text;
+            if (checkID == "" || checkID == null)
+            {
+                MessageBox.Show("Không thể xóa vì không còn bàn nào.", "Thông báo");
+                return;
+            }
             int id = Convert.ToInt32(txbTableID.Text);
+
+            if (BillDAO.Instance.GetCheckCountBillByTableID(id))
+            {
+                MessageBox.Show("Không thể xóa bàn ăn vì bàn ăn hiện đang có món.", "Thông báo");
+                return;
+            }
+
             if (TableDAO.Instance.DeleteTable(id))
             {
                 MessageBox.Show("Xóa bàn thành công", "Thông báo");
                 LoadListFood();
+                LoadListCategory();
                 LoadListTable();
                 if (deleteTable != null)
                 {
@@ -452,12 +519,17 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void btnAddTable_Click(object sender, EventArgs e)
         {
             string name = txbTableName.Text;
-
+            if(name == "" || name == null)
+            {
+                MessageBox.Show("Bạn chưa có tên bàn.", "Thông báo");
+                return;
+            }
 
             if (TableDAO.Instance.InsertTable(name))
             {
                 MessageBox.Show("Thêm bàn thành công", "Thông báo");
                 LoadListFood();
+                LoadListCategory();
                 LoadListTable();
                 if (insertTable != null)
                 {

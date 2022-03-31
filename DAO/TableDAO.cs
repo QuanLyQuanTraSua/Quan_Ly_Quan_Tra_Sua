@@ -77,8 +77,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public bool DeleteTable(int idTable)
         {
-            BillInfoDAO.Instance.DeleteBillInfoByIDTable(idTable);
-
             string query = string.Format("delete TableFood where id = {0}", idTable);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 

@@ -22,26 +22,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         {
             DataProvider.Instance.ExecuteQuery("delete BillInfo where idFood = " + id);
         }
-        
-        public void DeleteBillInfoByIDBill(int id)
-        {
-            DataProvider.Instance.ExecuteQuery("delete BillInfo where idBill = " + id);
-        }
-
-        public void DeleteBillInfoByIDTable(int id)
-        {
-            List<Bill> listbill = BillDAO.Instance.GetBillByIDTable(id);
-            foreach (Bill items in listbill)
-            {
-                DeleteBillInfoByIDBill(items.ID);
-            }
-            
-        }
-
-        public void DeleteFoodByIDCategory(int id)
-        {
-            DataProvider.Instance.ExecuteQuery("delete Food where idCategory = " + id);
-        }
 
         public List<BillInfo> GetListBillInfo(int id)
         {

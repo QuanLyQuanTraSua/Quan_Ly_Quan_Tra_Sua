@@ -70,7 +70,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         public bool DeleteCategory(int idCategory)
         {
             FoodDAO.Instance.DeleteFoodForByIDCategory(idCategory);
-
             string query = string.Format("delete FoodCategory where id = {0}", idCategory);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 

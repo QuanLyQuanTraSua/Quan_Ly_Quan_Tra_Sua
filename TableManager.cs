@@ -57,6 +57,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             cbCategory.DataSource = listCategory;
             cbCategory.DisplayMember = "Name";
             cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFood.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         void LoadFoodListByCategoryID(int id)
@@ -65,6 +66,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             cbFood.DataSource = listFood;
             cbFood.DisplayMember = "Name";
             cbFood.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public void LoadTable()
@@ -301,7 +303,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            if(cbFood.Text != "")
+            if(cbFood.Text != "" && cbCategory.Text != "")
             {
                 Table table = lsvBill.Tag as Table;
 

@@ -31,6 +31,44 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             return -1;
         }
 
+        public bool GetCheckCountBillByFoodID(int id)
+        {
+            string query = string.Format("select * from Food as f, BillInfo as bi, Bill as b where {0} = bi.idFood and  bi.idBill = b.id and b.status = 0", id);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool GetCheckCountBillByCategoryID(int id)
+        {
+            string query = string.Format("select * from FoodCategory as fc, Bill as b, BillInfo as bi, Food as f where {0} = f.idCategory and f.id = bi.idFood and bi.idBill = b.id and b.status = 0", id);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool GetCheckCountBillByTableID(int id)
+        {
+            string query = string.Format("select * from TableFood as t, Bill as b, BillInfo as bi where {0} = b.idTable and b.id = bi.idBill and b.status = 0", id);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
         public void CheckOut(int id, int discount, float totalPrice)
         {
             string query = "update Bill set DateCheckOut = GETDATE(), status = 1, discount = " + discount + ", totalPrice =  " + totalPrice + "  where id = " + id;
