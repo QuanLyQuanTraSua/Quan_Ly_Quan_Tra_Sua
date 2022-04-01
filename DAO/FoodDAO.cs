@@ -105,6 +105,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
         public bool DeleteFood(int idFood)
         {
+            BillInfoDAO.Instance.DeleteBillInfoByFoodID(idFood);
             string query = string.Format("delete Food where id = {0}", idFood);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 

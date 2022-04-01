@@ -653,5 +653,13 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
 
         #endregion
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'GetListBillByDateForReport.USP_getListBillByDateForReport' table. You can move, or remove it, as needed.
+            this.USP_getListBillByDateForReportTableAdapter.Fill(this.GetListBillByDateForReport.USP_getListBillByDateForReport,dtpkFromDate.Value, dtpkToDate.Value);
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

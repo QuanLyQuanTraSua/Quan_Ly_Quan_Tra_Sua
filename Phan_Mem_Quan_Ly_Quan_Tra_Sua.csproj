@@ -138,6 +138,7 @@
     <EmbeddedResource Include="RegisterAccount.resx">
       <DependentUpon>RegisterAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report.rdlc" />
     <EmbeddedResource Include="TableManager.resx">
       <DependentUpon>TableManager.cs</DependentUpon>
     </EmbeddedResource>
