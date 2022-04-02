@@ -20,7 +20,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         private DataProvider() { }
 
 
-        private string connectionSTR = @"Data Source=" + System.Windows.Forms.SystemInformation.ComputerName + ";Initial Catalog=QLQuanTS;Integrated Security=True";
+        private string connectionSTR = @"Data Source=LAPTOP-M1H1CJFU;Initial Catalog=QLQuanTS;Integrated Security=True";
 
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
