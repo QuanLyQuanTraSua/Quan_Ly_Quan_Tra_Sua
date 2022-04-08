@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
@@ -20,40 +21,48 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         private DataProvider() { }
 
 
-        private string connectionSTR = @"Data Source=" + System.Windows.Forms.SystemInformation.ComputerName + ";Initial Catalog=QLQuanTS;Integrated Security=True";
-
+        private string connectionSTR = @"Data Source=LAPTOP-M1H1CJFU;Initial Catalog=QLQuanTS;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            try
             {
-
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(query, connection);
-
-                if(parameter != null)
+                
+                using (SqlConnection connection = new SqlConnection(connectionSTR))
                 {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach(string items in listPara)
+
+
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    if (parameter != null)
                     {
-                        if(items.Contains('@'))
+                        string[] listPara = query.Split(' ');
+                        int i = 0;
+                        foreach (string items in listPara)
                         {
-                            command.Parameters.AddWithValue(items, parameter[i]);
-                            i++;
+                            if (items.Contains('@'))
+                            {
+                                command.Parameters.AddWithValue(items, parameter[i]);
+                                i++;
+                            }
                         }
                     }
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(data);
+
+                    connection.Close();
                 }
 
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-
-                connection.Close();
+                return data;
+            } catch(Exception e)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Thông báo");
+                return data;
             }
-
-            return data;
         }
 
         public int ExecuteNonQuery(string query, object[] parameter = null)

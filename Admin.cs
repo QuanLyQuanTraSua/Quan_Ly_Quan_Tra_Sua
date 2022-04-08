@@ -362,7 +362,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string name = txbNameCategory.Text;
-
+            if(name == "" || name == null)
+            {
+                MessageBox.Show("Không thể thêm vì không còn danh mục nào.", "Thông báo");
+                return;
+            }
 
             if (CategoryDAO.Instance.InsertCategory(name))
             {

@@ -155,6 +155,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         void F_InsertTable(object sender, EventArgs e)
         {
+            LoadTable();
             LoadCategory();
             if (cbCategory.SelectedItem == null)
             {
@@ -170,6 +171,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         void F_DeleteTable(object sender, EventArgs e)
         {
+            LoadTable();
             LoadCategory();
             if (cbCategory.SelectedItem == null)
             {
@@ -185,7 +187,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         void F_UpdateTable(object sender, EventArgs e)
         {
-            
+            LoadTable();
             LoadCategory();
             if (cbCategory.SelectedItem == null)
             {
