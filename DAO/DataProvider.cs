@@ -123,7 +123,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
                 data = command.ExecuteScalar();
                 connection.Close();
             }
-
             return data;
         }
     }
