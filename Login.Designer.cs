@@ -62,7 +62,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(82, 23);
             this.btnRegister.TabIndex = 4;
-            this.btnRegister.Text = "Đăng ký";
+            this.btnRegister.Text = "Thoát";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click_1);
             // 

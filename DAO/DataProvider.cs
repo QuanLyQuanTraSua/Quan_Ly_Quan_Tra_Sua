@@ -21,7 +21,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         private DataProvider() { }
 
 
-        private string connectionSTR = @"Data Source=LAPTOP-M1H1CJFU;Initial Catalog=QLQuanTS;Integrated Security=True";
+        private string connectionSTR = @"Data Source=localhost,1433;Initial Catalog=QLQuanTS;User ID=SA;Password=ninh2405";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

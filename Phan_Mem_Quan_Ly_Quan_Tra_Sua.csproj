@@ -104,12 +104,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegisterAccount.Designer.cs">
-      <DependentUpon>RegisterAccount.cs</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TableManager.cs">
       <SubType>Form</SubType>
@@ -135,9 +129,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegisterAccount.resx">
-      <DependentUpon>RegisterAccount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report.rdlc" />
     <EmbeddedResource Include="TableManager.resx">
       <DependentUpon>TableManager.cs</DependentUpon>

@@ -54,8 +54,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
         private void btnRegister_Click_1(object sender, EventArgs e)
         {
-            RegisterAccount f = new RegisterAccount();
-            f.Show();
+            this.Close();
         }
     }
 }

@@ -83,13 +83,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             return result > 0;
         }
-        public bool RegisterAccount(string name, string displayName, string passWord)
-        {
-            string query = string.Format("insert Account(UserName, DisplayName, PassWWord, TYPE) values(N'{0}', N'{1}', N'{2}', 1)", name, displayName, passWord);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-
-            return result > 0;
-        }
 
         public bool UpdateAccount(string name, string displayName, int type)
         {
