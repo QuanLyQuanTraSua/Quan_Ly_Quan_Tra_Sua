@@ -523,13 +523,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             remove { insertTable -= value; }
         }
 
-        private event EventHandler deleteTable;
-        public event EventHandler DeleteTable
-        {
-            add { deleteTable += value; }
-            remove { deleteTable -= value; }
-        }
-
         private event EventHandler updateTable;
         public event EventHandler UpdateTable
         {

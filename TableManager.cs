@@ -147,29 +147,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             f.UpdateCategory += F_UpdateCategory;
 
             f.InsertTable += F_InsertTable;
-            f.DeleteTable += F_DeleteTable;
             f.UpdateTable += F_UpdateTable;
 
             f.ShowDialog();
         }
 
         void F_InsertTable(object sender, EventArgs e)
-        {
-            LoadTable();
-            LoadCategory();
-            if (cbCategory.SelectedItem == null)
-            {
-                return;
-            }
-            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
-            if (lsvBill.Tag != null)
-            {
-                ShowBill((lsvBill.Tag as Table).ID);
-            }
-            LoadTable();
-        }
-
-        void F_DeleteTable(object sender, EventArgs e)
         {
             LoadTable();
             LoadCategory();
