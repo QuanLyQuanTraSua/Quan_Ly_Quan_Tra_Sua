@@ -488,39 +488,6 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             }
         }
 
-        private void btnDeleteTable_Click(object sender, EventArgs e)
-        {
-            string checkID = txbTableID.Text;
-            if (checkID == "" || checkID == null)
-            {
-                MessageBox.Show("Không thể xóa vì không còn bàn nào.", "Thông báo");
-                return;
-            }
-            int id = Convert.ToInt32(txbTableID.Text);
-
-            if (BillDAO.Instance.GetCheckCountBillByTableID(id))
-            {
-                MessageBox.Show("Không thể xóa bàn ăn vì bàn ăn hiện đang có món.", "Thông báo");
-                return;
-            }
-
-            if (TableDAO.Instance.DeleteTable(id))
-            {
-                MessageBox.Show("Xóa bàn thành công", "Thông báo");
-                LoadListFood();
-                LoadListCategory();
-                LoadListTable();
-                if (deleteTable != null)
-                {
-                    deleteTable(this, new EventArgs());
-                }
-            }
-            else
-            {
-                MessageBox.Show("Xóa bàn không thành công! Vui lòng thử lại", "Thông báo");
-            }
-        }
-
         private void btnAddTable_Click(object sender, EventArgs e)
         {
             string name = txbTableName.Text;
