@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
@@ -29,7 +30,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
-            foreach(DataRow items in data.Rows)
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
+
+            foreach (DataRow items in data.Rows)
             {
                 Food food = new Food(items);
                 list.Add(food);
@@ -45,6 +51,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             string query = "select * from Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
 
             foreach (DataRow items in data.Rows)
             {

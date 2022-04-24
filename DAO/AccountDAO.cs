@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
@@ -39,7 +40,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("select * from Account where UserName = '" + userName + "'");
 
-            foreach(DataRow items in data.Rows)
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
+
+            foreach (DataRow items in data.Rows)
             {
                 return new Account(items);
             }
@@ -59,6 +65,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             string query = "select * from Account";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
 
             foreach (DataRow items in data.Rows)
             {

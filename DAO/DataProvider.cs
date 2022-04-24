@@ -60,7 +60,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
                 return data;
             } catch(Exception e)
             {
-                MessageBox.Show($"Không thể kết nối dữ liệu.{e.Message}", "Thông báo");
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Thông báo");
                 return data;
             }
         }

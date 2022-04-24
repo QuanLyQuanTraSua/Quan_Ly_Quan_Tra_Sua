@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
@@ -29,7 +30,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 
             DataTable data = DataProvider.Instance.ExecuteQuery("select * from BillInfo where idBill = " + id );
 
-            foreach(DataRow items in data.Rows)
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
+
+            foreach (DataRow items in data.Rows)
             {
                 BillInfo info = new BillInfo(items);
                 listBillInfo.Add(info);

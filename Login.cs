@@ -34,7 +34,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
             } else
             {
-                MessageBox.Show("Sai tên đăng nhập hoặc tài khoản.");
+                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu.");
             }
         }
 

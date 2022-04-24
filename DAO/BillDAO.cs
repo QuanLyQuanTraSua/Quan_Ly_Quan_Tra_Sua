@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
 {
@@ -22,7 +23,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("select * from Bill where idTable = " + id + " and status = 0");
 
-            if(data.Rows.Count > 0)
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
+
+            if (data.Rows.Count > 0)
             {
                 Bill bill = new Bill(data.Rows[0]);
                 return bill.ID;
@@ -35,6 +41,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         {
             string query = string.Format("select * from Food as f, BillInfo as bi, Bill as b where {0} = bi.idFood and  bi.idBill = b.id and b.status = 0", id);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
 
             if (data.Rows.Count > 0)
             {
@@ -49,6 +60,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             string query = string.Format("select * from FoodCategory as fc, Bill as b, BillInfo as bi, Food as f where {0} = f.idCategory and f.id = bi.idFood and bi.idBill = b.id and b.status = 0", id);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
+
             if (data.Rows.Count > 0)
             {
                 return true;
@@ -61,6 +77,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         {
             string query = string.Format("select * from TableFood as t, Bill as b, BillInfo as bi where {0} = b.idTable and b.id = bi.idBill and b.status = 0", id);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
 
             if (data.Rows.Count > 0)
             {
@@ -83,6 +104,12 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
             string query = "select * from Bill where status = 0 and idTable = " + id;
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+
+            if (data == null)
+            {
+                MessageBox.Show($"Không thể kết nối dữ liệu.", "Lỗi");
+            }
 
             foreach (DataRow items in data.Rows)
             {

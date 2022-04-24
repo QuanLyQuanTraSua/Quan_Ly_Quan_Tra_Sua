@@ -318,7 +318,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             }
             else
             {
-                MessageBox.Show("Bạn hãy chọn món.", "Thông báo");
+                MessageBox.Show("Chưa có món ăn nào.", "Thông báo");
             }
         }
 
