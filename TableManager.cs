@@ -129,7 +129,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         }
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AccountProfile f = new AccountProfile(LoginAccount);       
+            AccountProfile f = new AccountProfile(LoginAccount);          
             f.ShowDialog();
         }
 
@@ -148,7 +148,8 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
 
             f.InsertTable += F_InsertTable;
             f.UpdateTable += F_UpdateTable;
-
+            LoadCategory();
+            LoadTable();
             f.ShowDialog();
         }
 
@@ -351,5 +352,11 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
             }
         }
         #endregion
+
+        private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadCategory();
+            LoadTable();
+        }
     }
 }
