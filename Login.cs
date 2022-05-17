@@ -24,6 +24,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua
         {
             string userName = txbUserName.Text;
             string passWord = txbPassWord.Text;
+
             if (login(userName, passWord))
             {
                 Account loginAccount = AccountDAO.Instance.GetAccountByUserName(userName);
