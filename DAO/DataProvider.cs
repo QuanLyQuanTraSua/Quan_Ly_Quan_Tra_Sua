@@ -21,7 +21,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
         private DataProvider() { }
 
 
-        private string connectionSTR = @"Data Source=117.1.195.58,1433;Initial Catalog=QLQuanTS;User ID=client;Password=ninh2405";
+        private string connectionSTR = @"Data Source=DESKTOP-U37CL47\SQLEXPRESS;Initial Catalog=QLQuanTS;User ID=sa;Password=ninh2405";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
@@ -60,7 +60,7 @@ namespace Phan_Mem_Quan_Ly_Quan_Tra_Sua.DAO
                 return data;
             } catch(Exception e)
             {
-                MessageBox.Show($"Không thể kết nối dữ liệu.", "Thông báo");
+                MessageBox.Show($"Không thể kết nối dữ liệu:" + e.Message, "Thông báo");
                 return data;
             }
         }
